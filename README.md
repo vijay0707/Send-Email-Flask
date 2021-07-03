@@ -1,2 +1,2 @@
 # Send-Email-Flask
-Send Email using flask (microweb framework)
+Send Email using flask python
