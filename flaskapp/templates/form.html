@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="mx-0 mx-sm-auto">
+      <div class="card card-body justify-content-center">
+        <div class="card-header bg-primary">
+          <h5 class="card-title text-white mt-2" id="exampleModalLabel">Feedback request</h5>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <p>
+              <strong>Your opinion matters</strong>
+            </p>
+            <p>
+              Have some ideas how to improve our product?
+              <strong>Give us your feedback.</strong>
+            </p>
+          </div>
+    
+          <hr />
+    
+          <form class="px-4" action="" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-check form-control mb-5">
+              <label class="form-check-label  mr-5" for="radioExample1">
+                Name
+              </label>
+              {% if form.name.errors %} 
+                 {{ form.name(class="mb-3 form-control is-invalid", placeholder="Username", type="text") }}
+                     <div class="invalid-feedback">
+                         {% for error in form.name.errors %}
+                             <span>{{ error }}</span>
+                        {% endfor %}
+                     </div>
+                 {% else %}
+                    {{ form.name(class="mb-3 form-control", placeholder="Name", type="text") }}
+              {% endif %}
+
+              <hr class="hr-4">
+              <div class="form-check mb-5">
+                <label class="form-check-label mr-5" for="radioExample1">
+                  Email
+                </label>
+                {% if form.email.errors %} 
+                   {{ form.email(class="mb-3 input form-control is-invalid", placeholder="Enter Email Address", type="text") }}
+                       <div class="invalid-feedback">
+                           {% for error in form.email.errors %}
+                               <span>{{ error }}</span>
+                           {% endfor %}
+                       </div>
+                   {% else %}
+                      {{ form.email(class="mb-3 form-control", placeholder="Enter Email Address", type="text") }}
+                   {% endif %}
+            
+            <p class="text-center mt-4"><strong>Your rating:</strong></p>
+    
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" required/>
+              <label class="form-check-label" for="radioExample1">
+                Very good
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" required />
+              <label class="form-check-label" for="radioExample2">
+                Good
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" required />
+              <label class="form-check-label" for="radioExample3">
+                Medicore
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="exampleForm" id="radioExample4" required/>
+              <label class="form-check-label" for="radioExample4">
+                Bad
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="exampleForm" id="radioExample5" required />
+              <label class="form-check-label" for="radioExample5">
+                Very bad
+              </label>
+            </div>
+    
+            <p class="text-center"><strong>What could we improve?</strong></p>
+    
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+              <label class="form-label" for="form4Example3">Your feedback</label>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-end">
+          {{ form.submit(type="submit",class="btn btn-primary text-center") }}
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
