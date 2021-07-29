@@ -16,7 +16,7 @@ def form():
         body = """
         Thank you {} for filling the form!😊
         """.format(form.name.data)
-        msg = Message(subject="survey form", sender='flaskform00@gmail.com', recipients=[form.email.data], body=body)
+        msg = Message(subject="survey form", sender='', recipients=[form.email.data], body=body)
         
 
         mail.send(msg)
